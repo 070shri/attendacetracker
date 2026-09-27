@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-padding-top: env(safe-area-inset-top, 0px);
+}
+
+body {
+  @apply bg-surface-light text-ink-light font-sans antialiased;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+html.dark body {
+  @apply bg-surface-darkbg text-ink-dark;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: #3457D533;
+}
+
+.card {
+  @apply bg-surface-card border border-surface-border rounded-xl2 shadow-card;
+}
+html.dark .card {
+  @apply bg-surface-darkcard border-surface-darkborder shadow-cardDark;
+}
+
+.stat-number {
+  @apply font-mono tabular-nums;
+}
+
+.btn-primary {
+  @apply bg-accent text-white font-medium rounded-xl2 px-4 py-2.5 transition-colors hover:bg-accent-soft active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none;
+}
+
+.btn-secondary {
+  @apply bg-transparent border border-surface-border text-ink-light font-medium rounded-xl2 px-4 py-2.5 transition-colors hover:bg-black/[0.03] active:scale-[0.98];
+}
+html.dark .btn-secondary {
+  @apply border-surface-darkborder text-ink-dark hover:bg-white/[0.04];
+}
+
+.input {
+  @apply w-full bg-transparent border border-surface-border rounded-xl2 px-3.5 py-2.5 text-sm outline-none transition-colors focus:border-accent placeholder:text-ink-mutedlight;
+}
+html.dark .input {
+  @apply border-surface-darkborder placeholder:text-ink-muteddark focus:border-accent;
+}
+
+.label-sm {
+  @apply text-sm font-medium text-ink-mutedlight;
+}
+html.dark .label-sm {
+  @apply text-ink-muteddark;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
